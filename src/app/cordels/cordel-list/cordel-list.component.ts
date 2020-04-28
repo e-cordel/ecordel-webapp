@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Cordel } from '../cordel';
+import { CordelService } from '../cordel.service';
 
 @Component({
   selector: 'e-cordels',
@@ -9,24 +10,23 @@ import { Cordel } from '../cordel';
 })
 export class CordelListComponent implements OnInit {
 
-  cordels : Array<Cordel>= [
-    {
-      xilogravura : 'https://img.elo7.com.br/product/original/1EF2F6C/xilogravura-carro-de-boi-xilogravura.jpg',
-      text: 'loren ipson dolor',
-      author: 'Mário Focking Santos',
-      title: 'My first e-cordel'
-    },
-    {
-      xilogravura : 'https://img.elo7.com.br/product/original/1EF2F6C/xilogravura-carro-de-boi-xilogravura.jpg',
-      text: 'loren ipson dolor',
-      author: 'Mário Focking Santos',
-      title: 'My first e-cordel'
-    }
-  ];
+  private _cordels:Array<Cordel>;
+  private errorMessage;
 
-  constructor() { }
+  constructor(private cordelService : CordelService) { }
 
   ngOnInit() {
+    this.cordelService.getCordels().subscribe({
+      next: data => this._cordels = data,
+      error: err => {
+        this.errorMessage = err;
+        console.error(err);
+      }
+    });
+  }
+
+  get cordels(){
+    return this._cordels;
   }
 
 }

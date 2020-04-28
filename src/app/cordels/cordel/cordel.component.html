@@ -3,6 +3,7 @@
     <div class="card-body">
         <h5 class="card-title">{{cordel.title | uppercase}}</h5>
         <p class="card-text">{{cordel.text}}</p>
-        <a href="#" class="btn btn-primary">Read</a>
+        <ec-star [rating]='cordel.rating'></ec-star>
+        <a href="#" class="btn btn-primary" (click)='openCordel(cordel)'>Read</a>
     </div>
 </div>
