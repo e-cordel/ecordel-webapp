@@ -17,7 +17,7 @@ export class CordelListComponent implements OnInit {
 
   ngOnInit() {
     this.cordelService.getCordels().subscribe({
-      next: data => this._cordels = data,
+      next: data => this._cordels = data['content'],
       error: err => {
         this.errorMessage = err;
         console.error(err);

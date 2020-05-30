@@ -1,3 +1,5 @@
 <div class="row">
-    <e-cordel *ngFor="let cordel of cordels" [cordel]="cordel"></e-cordel>
+    <div class="col" *ngFor="let cordel of cordels">
+        <e-cordel [cordel]="cordel"></e-cordel>
+    </div>
 </div>

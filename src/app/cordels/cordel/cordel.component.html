@@ -2,8 +2,8 @@
     <img [src]="cordel.xilogravura" class="card-img-top" alt="xilogravura">
     <div class="card-body">
         <h5 class="card-title">{{cordel.title | uppercase}}</h5>
-        <p class="card-text">{{cordel.text}}</p>
+        <p class="card-text">{{cordel.description}}</p>
         <ec-star [rating]='cordel.rating'></ec-star>
-        <a href="#" class="btn btn-primary" (click)='openCordel(cordel)'>Read</a>
+        <a  class="btn btn-primary" (click)='openCordel(cordel)'>Read</a>
     </div>
 </div>

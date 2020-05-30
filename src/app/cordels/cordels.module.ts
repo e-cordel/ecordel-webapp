@@ -4,12 +4,14 @@ import { Cordel } from './cordel';
 import { CordelListComponent } from './cordel-list/cordel-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { StarComponent } from './star/star.component';
+import { CordelDetailComponent } from './cordel-detail/cordel-detail.component';
 
 @NgModule({
     declarations:[
         StarComponent,
         CordelComponent,
-        CordelListComponent
+        CordelListComponent,
+        CordelDetailComponent
     ],
     imports: [
         BrowserModule

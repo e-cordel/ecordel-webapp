@@ -1,0 +1,12 @@
+<div *ngIf="cordel">
+    <h1>{{cordel.title}}</h1>
+    
+    <img [src]="cordel.xilogravura" class="card-img-top" alt="xilogravura">
+
+    <div>
+        <p>{{cordel.text}}</p>
+    </div>
+
+    <a (onclick)='onBack()'>Back</a>
+
+</div>
