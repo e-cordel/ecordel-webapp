@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 
 
 const routes: Routes = [
+  {path:'cordel/all', component: CordelListComponent},
   {path:'cordel/:id', component: CordelDetailComponent},
-  {path:'', component: AppComponent}
+  {path:'', component: CordelListComponent}
 ];
 
 @NgModule({

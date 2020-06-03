@@ -19,4 +19,10 @@ export class CordelService{
             tap(data => console.log(JSON.stringify(data))),
         );
     }
+
+    getCordelById(id:number) : Observable<Cordel>{
+        return this.httpClient.get<Cordel>(this.ecordelApi+"/"+id).pipe(
+            tap(data => console.log(JSON.stringify(data))),
+        );
+    }
 }

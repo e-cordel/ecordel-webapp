@@ -12,10 +12,6 @@ export class CordelComponent implements OnInit {
 
   constructor() { }
 
-  openCordel(cordel: Cordel){
-    console.log(cordel.title);
-  }
-
   ngOnInit() : void{
   }
 
