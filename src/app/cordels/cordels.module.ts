@@ -5,6 +5,7 @@ import { CordelListComponent } from './cordel-list/cordel-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { StarComponent } from './star/star.component';
 import { CordelDetailComponent } from './cordel-detail/cordel-detail.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations:[
@@ -14,7 +15,8 @@ import { CordelDetailComponent } from './cordel-detail/cordel-detail.component';
         CordelDetailComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        RouterModule
     ],
     exports:[
         CordelComponent,
