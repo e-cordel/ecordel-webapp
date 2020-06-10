@@ -1,5 +1,9 @@
-<div class="row">
-    <div class="col" *ngFor="let cordel of cordels">
-        <e-cordel [cordel]="cordel"></e-cordel>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col p-2" *ngFor="let cordel of cordels">
+                <e-cordel [cordel]="cordel"></e-cordel>
+            </div>
+        </div>
     </div>
 </div>

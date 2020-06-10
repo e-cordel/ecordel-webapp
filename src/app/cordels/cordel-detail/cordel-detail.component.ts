@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { CordelService } from '../cordel.service';
 import { Cordel } from '../cordel';
 
@@ -12,7 +14,7 @@ export class CordelDetailComponent implements OnInit {
   private _cordel:Cordel;
 
   constructor(private route: ActivatedRoute, 
-    private router: Router,
+    private location: Location,
     private cordelService : CordelService) { }
 
   ngOnInit() {
@@ -29,8 +31,8 @@ export class CordelDetailComponent implements OnInit {
     return this._cordel;
   }
 
-  onBack():void{
-    this.router.navigate[''];
+  onBack(){
+    this.location.back();
   }
 
 }

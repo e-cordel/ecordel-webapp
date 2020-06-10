@@ -25,4 +25,9 @@ export class CordelService{
             tap(data => console.log(JSON.stringify(data))),
         );
     }
+
+    addCordel (cordel: Cordel): Observable<Cordel> {
+        return this.httpClient.post<Cordel>(this.ecordelApi, cordel );
+    }
+
 }
