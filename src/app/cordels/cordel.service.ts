@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Cordel } from './cordel';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
-import {Observable} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {catchError, tap, map} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -26,8 +26,11 @@ export class CordelService{
         );
     }
 
-    addCordel (cordel: Cordel): Observable<Cordel> {
-        return this.httpClient.post<Cordel>(this.ecordelApi, cordel );
+    addCordel (cordel: Cordel): Observable<string> {
+        return this.httpClient.post(this.ecordelApi, cordel, { observe: 'response'} )
+            .pipe(
+                map( response => response.headers.get("Location"))
+            );
     }
 
 }

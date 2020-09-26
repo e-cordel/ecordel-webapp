@@ -3,10 +3,9 @@
     <div class="text-center">
         <h3>{{cordel.title}}</h3>
         <img [src]="cordel.xilogravura" class="img-thumbnail" alt="xilogravura">
-        <p class="p-3">{{cordel.content}}</p>
+        <p class="p-3" innerHTML={{cordel.content}}></p>
 
         <button class="btn btn-secondary my-2" (click)='onBack()'>Back</button>
     </div>
-
 
 </div>
