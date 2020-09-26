@@ -4,13 +4,15 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 
 import {Observable, of} from 'rxjs';
 import {catchError, tap, map} from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CordelService{
 
-    private ecordelApi = 'http://localhost:8080/cordels';
+
+    private ecordelApi = `${environment.API_URL}/cordels`;
     
     constructor(private httpClient: HttpClient){}
 

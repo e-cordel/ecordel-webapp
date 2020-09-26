@@ -11,7 +11,7 @@ import { tap } from 'rxjs/operators';
 })
 export class CordelFormComponent implements OnInit {
 
-  private cordel = {author:{}} as Cordel;
+  private _cordel = {author:{}} as Cordel;
 
   constructor(private cordelService : CordelService) { }
 
@@ -19,8 +19,12 @@ export class CordelFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("submiting ", this.cordel);
-    this.cordelService.addCordel(this.cordel).subscribe( localtion => alert('Cordel salvo com sucesso!') );
+    console.log("submiting ", this._cordel);
+    this.cordelService.addCordel(this._cordel).subscribe( localtion => alert('Cordel salvo com sucesso!') );
+  }
+
+  get cordel(){
+    return this._cordel;
   }
 
 }
