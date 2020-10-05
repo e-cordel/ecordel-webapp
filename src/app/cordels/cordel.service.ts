@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment';
 })
 export class CordelService{
 
-
     private ecordelApi = `${environment.API_URL}/cordels`;
     
     constructor(private httpClient: HttpClient){}

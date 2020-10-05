@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CordelsModule } from './cordels/cordels.module';
 import { CallToActionComponent } from './template/call-to-action/call-to-action.component';
+import { AuthenticationModule } from './auth/authentication.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CallToActionComponent } from './template/call-to-action/call-to-action.
     BrowserModule,
     AppRoutingModule,
     CordelsModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
