@@ -6,11 +6,16 @@ import { tap, shareReplay } from 'rxjs/operators';
 
 import { AuthResult } from './auth-result';
 
+import * as moment from 'moment';
+
+const TOKEN = "token";
+const EXPIRES_AT = "expires_at";
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
+  
   private loginUrl = `${environment.API_URL}/auth`;
 
   constructor(private httpClient: HttpClient) { }
@@ -18,20 +23,34 @@ export class AuthenticationService {
   login(username: string, password: string) {
     return this.httpClient.post(this.loginUrl, { username, password })
       .pipe(
-        tap(response => this.setSession),
+        tap(this.setSession),
+        tap(response => console.log(response)),
         shareReplay(1)
       );
   }
 
   private setSession(authResult: AuthResult) {
-    // const expiresAt = moment().add(authResult.expiresIn, 'second');
-    console.log(">>>", authResult);
-    localStorage.setItem('token', authResult.token);
-    // localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+    localStorage.setItem(TOKEN, authResult.token);
+    localStorage.setItem(EXPIRES_AT, JSON.stringify(authResult.expiresAt.valueOf()));
   }
 
   logout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem(TOKEN);
+    localStorage.removeItem(EXPIRES_AT);
+  }
+
+  public isLoggedIn() {
+    return moment().isBefore(this.getExpiration());
+  }
+
+  isLoggedOut() {
+    return !this.isLoggedIn();
+  }
+
+  getExpiration() {
+    const expiration = localStorage.getItem(EXPIRES_AT);
+    const expiresAt = JSON.parse(expiration);
+    return moment(expiresAt);
   }
 
 }
