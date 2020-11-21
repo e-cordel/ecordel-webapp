@@ -5,6 +5,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import {Observable, of} from 'rxjs';
 import {catchError, tap, map} from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { CordelSummary } from './cordel-summary';
 
 @Injectable({
     providedIn: 'root'

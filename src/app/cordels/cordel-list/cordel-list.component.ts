@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Cordel } from '../cordel';
+import { CordelSummary } from '../cordel-summary';
 import { CordelService } from '../cordel.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { CordelService } from '../cordel.service';
 })
 export class CordelListComponent implements OnInit {
 
-  private _cordels:Array<Cordel>;
+  private _cordels:Array<CordelSummary>;
   private errorMessage;
 
   constructor(private cordelService : CordelService) { }
