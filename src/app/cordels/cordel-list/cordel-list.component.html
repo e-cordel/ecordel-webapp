@@ -1,7 +1,13 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col p-2" *ngFor="let cordel of cordels">
+            <div class="col p-2">
+                <input #title class="form-control" (keyup.enter)="onEnter(title.value)" placeholder="Título"/>
+            </div>
+        </div>
+        <h2 *ngIf="title.value">Título: {{title.value}}</h2>
+        <div class="row">
+            <div class="col d-flex justify-content-center" *ngFor="let cordel of cordels">
                 <e-cordel [cordel]="cordel"></e-cordel>
             </div>
         </div>

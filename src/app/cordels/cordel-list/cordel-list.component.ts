@@ -11,23 +11,32 @@ import { CordelService } from '../cordel.service';
 })
 export class CordelListComponent implements OnInit {
 
-  private _cordels:Array<CordelSummary>;
+  private _cordels: Array<CordelSummary>;
   private errorMessage;
 
-  constructor(private cordelService : CordelService) { }
+  constructor(private cordelService: CordelService) { }
 
   ngOnInit() {
-    this.cordelService.getCordels().subscribe({
+    this.displayCordels();
+  }
+
+  get cordels() {
+    return this._cordels;
+  }
+
+  onEnter(title: string) {
+    console.log('searching by title', title);
+    this.displayCordels(title);
+  }
+
+  private displayCordels(title?: string) {
+    this.cordelService.getCordels(title).subscribe({
       next: data => this._cordels = data['content'],
       error: err => {
         this.errorMessage = err;
         console.error(err);
       }
     });
-  }
-
-  get cordels(){
-    return this._cordels;
   }
 
 }
