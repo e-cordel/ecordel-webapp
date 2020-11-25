@@ -26,9 +26,36 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-    - run: npx npm-force-resolutions
-    - run: npm install
-    - run: npm install -g @angular/cli
-    - run: ng build --prod
+    - name: Install Dependencies
+      run: |
+        npx npm-force-resolutions
+        npm install
+        npm install -g @angular/cli
+    - name: Build
+      run: ng build --prod
       env:
         CI: true
+  deploy: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: FTP deployment
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          # ftp server
+          server: FTP_SERVER
+          # ftp username
+          username: FTP_USER
+          # ftp password
+          password: FTP_PASSWORD
+          # Folder to upload from, must end with trailing slash /
+          local-dir: dist/
+          # Prints which modifications will be made with current config options, but doesnt actually make any changes
+          dry-run: true
+          # An array of glob patterns, these files will not be included in the publish/delete process
+          exclude: .*
+          # How verbose should the information be - warn, info, debug
+          log-level: info
