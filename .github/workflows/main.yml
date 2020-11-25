@@ -53,7 +53,7 @@ jobs:
           # ftp password
           password: FTP_PASSWORD
           # Folder to upload from, must end with trailing slash /
-          local-dir: dist/
+          local-dir: ./dist/ecordel-web/
           # Prints which modifications will be made with current config options, but doesnt actually make any changes
           dry-run: true
           # An array of glob patterns, these files will not be included in the publish/delete process
