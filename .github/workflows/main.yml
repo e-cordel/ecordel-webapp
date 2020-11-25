@@ -26,6 +26,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
+    - run: npx npm-force-resolutions
     - run: npm install
     - run: npm install -g @angular/cli
     - run: ng build --prod
