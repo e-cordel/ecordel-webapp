@@ -37,6 +37,7 @@ jobs:
         CI: true
   deploy: 
     runs-on: ubuntu-latest
+    needs: [build]
     steps:
       - name: FTP deployment
         env:
