@@ -11,6 +11,7 @@ import { Cordel } from '../cordel';
 })
 export class CordelDetailComponent implements OnInit {
 
+  readonly ID : string = 'id';
   private _cordel:Cordel;
 
   constructor(private route: ActivatedRoute, 
@@ -18,7 +19,7 @@ export class CordelDetailComponent implements OnInit {
     private cordelService : CordelService) { }
 
   ngOnInit() {
-     let id = +this.route.snapshot.paramMap.get('id');
+     let id = +this.route.snapshot.paramMap.get(this.ID);
      this.cordelService.getCordelById(id).subscribe({
       next: data => this._cordel = data,
       error: err => {
