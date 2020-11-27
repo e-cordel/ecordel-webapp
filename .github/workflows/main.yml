@@ -1,8 +1,6 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the action will run. 
+
 on:
   # Triggers the workflow on push or pull request events but only for the develop branch
   push:
@@ -33,12 +31,28 @@ jobs:
         npm install -g @angular/cli
     - name: Build
       run: ng build --prod
-      env:
-        CI: true
+    - shell: bash
+      run: | 
+            tar -zcf dist.tar.gz ./dist/
+    - name: Upload cordel-web result to actions artifact
+      uses: actions/upload-artifact@v2
+      with:
+         name: ecordel-web
+         path: dist.tar.gz
+
+        
+        
   deploy: 
     runs-on: ubuntu-latest
     needs: [build]
     steps:
+      - name: Download ecordel-web artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ecordel-web
+      - shell: bash
+        run: |
+          tar -zxf dist.tar.gz
       - name: FTP deployment
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
