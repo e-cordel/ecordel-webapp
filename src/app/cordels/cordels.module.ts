@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CordelComponent } from './cordel/cordel.component';
+import { CordelCardComponent } from './cordel-card/cordel-card.component';
 import { CordelListComponent } from './cordel-list/cordel-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { StarComponent } from './star/star.component';
@@ -11,7 +11,7 @@ import { CordelFormComponent } from './cordel-form/cordel-form.component';
 @NgModule({
     declarations:[
         StarComponent,
-        CordelComponent,
+        CordelCardComponent,
         CordelListComponent,
         CordelDetailComponent,
         CordelFormComponent
@@ -22,7 +22,7 @@ import { CordelFormComponent } from './cordel-form/cordel-form.component';
         FormsModule
     ],
     exports:[
-        CordelComponent,
+        CordelCardComponent,
         CordelListComponent,
         CordelFormComponent
     ]
