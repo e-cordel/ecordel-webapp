@@ -5,7 +5,7 @@ import { CordelSummary } from '../cordel-summary';
 import { CordelService } from '../cordel.service';
 
 @Component({
-  selector: 'ec-list',
+  selector: 'cordel-list',
   templateUrl: './cordel-list.component.html',
   styleUrls: ['./cordel-list.component.css']
 })
