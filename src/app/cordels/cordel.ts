@@ -1,5 +1,5 @@
-import { Author } from './author';
-import { Xilogravura } from './xilogravura';
+import { Author } from '../author/author';
+import { Xilogravura } from '../xilogravura/xilogravura';
 
 export interface Cordel {
     id: number;

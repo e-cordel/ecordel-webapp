@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CallToActionComponent implements OnInit {
   title = 'e-cordel app';
-  text = "Baixe o nosso app e tenha acesso a vários cordéis sempre que desejar."
+  text = "Visite nosso site e saiba mais sobre o projeto."
 
   constructor() { }
 

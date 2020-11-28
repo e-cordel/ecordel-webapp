@@ -3,11 +3,11 @@ import { Cordel } from '../cordel';
 import { CordelSummary } from '../cordel-summary';
 
 @Component({
-  selector: 'e-cordel',
-  templateUrl: './cordel.component.html',
-  styleUrls: ['./cordel.component.css']
+  selector: 'cordel-card',
+  templateUrl: './cordel-card.component.html',
+  styleUrls: ['./cordel-card.component.css']
 })
-export class CordelComponent implements OnInit {
+export class CordelCardComponent implements OnInit {
 
   @Input() cordel : CordelSummary;
 

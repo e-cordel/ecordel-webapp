@@ -1,4 +1,4 @@
-import { Author } from './author';
+import { Author } from '../author/author';
 
 export interface Xilogravura {
     id: number;
