@@ -12,6 +12,6 @@ jobs:
         uses: devmasx/merge-branch@v1.3.1
         with:
           type: now
-          from_branch: development
-          target_branch: staging
+          from_branch: develop
+          target_branch: master
           github_token: ${{ secrets.GITHUB_TOKEN }}
