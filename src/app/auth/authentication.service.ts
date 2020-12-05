@@ -8,6 +8,9 @@ import { AuthResult } from './auth-result';
 
 import * as moment from 'moment';
 
+import decode from 'jwt-decode';
+import { TokenPayload } from './token-payload';
+
 const TOKEN = "token";
 const EXPIRES_AT = "expires_at";
 
@@ -51,6 +54,12 @@ export class AuthenticationService {
     const expiration = localStorage.getItem(EXPIRES_AT);
     const expiresAt = JSON.parse(expiration);
     return moment(expiresAt);
+  }
+
+  getRoles() : string[] {
+    const payload : TokenPayload = decode ( localStorage.getItem(TOKEN));
+    console.log(payload);
+    return payload.roles;
   }
 
 }
