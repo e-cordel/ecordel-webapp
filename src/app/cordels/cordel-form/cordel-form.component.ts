@@ -3,6 +3,7 @@ import { Cordel } from '../cordel';
 import { Observable } from 'rxjs';
 import { CordelService } from '../cordel.service';
 import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cordel-form',
@@ -11,9 +12,11 @@ import { tap } from 'rxjs/operators';
 })
 export class CordelFormComponent implements OnInit {
 
-  private _cordel = {author:{}} as Cordel;
+  private _cordel = {
+    author:{},
+  } as Cordel;
 
-  constructor(private cordelService : CordelService) { }
+  constructor(private cordelService : CordelService, private router : Router) { }
 
   ngOnInit() {
   }
@@ -21,6 +24,7 @@ export class CordelFormComponent implements OnInit {
   onSubmit(){
     console.log("submiting ", this._cordel);
     this.cordelService.addCordel(this._cordel).subscribe( localtion => alert('Cordel salvo com sucesso!') );
+    this.router.navigateByUrl("/");
   }
 
   get cordel(){

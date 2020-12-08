@@ -2,10 +2,13 @@
     
     <div class="text-center">
         <h3>{{cordel.title}}</h3>
-        <img [src]="cordel.xilogravura.url" class="img-thumbnail" alt="xilogravura">
+        <img *ngIf="cordel.xilogravura; else noImage" [src]="cordel.xilogravura.url" class="img-thumbnail" alt="xilogravura">
+        <ng-template #noImage>
+            <img src="assets/img/ebook.png" class="img-thumbnail" alt="xilogravura">
+        </ng-template>
         <p class="p-3" innerHTML={{cordel.content}}></p>
 
-        <button class="btn btn-secondary my-2" (click)='onBack()'>Back</button>
+        <button class="btn btn-secondary my-2" (click)='onBack()'>Voltar</button>
     </div>
 
 </div>

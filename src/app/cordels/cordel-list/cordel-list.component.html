@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col p-2">
-                <input #title class="form-control" (keyup.enter)="onEnter(title.value)" placeholder="Título"/>
+                <input #title class="form-control" (keyup.enter)="onEnter(title.value)" placeholder="Pesquise por título"/>
             </div>
         </div>
         <h2 *ngIf="title.value">Título: {{title.value}}</h2>

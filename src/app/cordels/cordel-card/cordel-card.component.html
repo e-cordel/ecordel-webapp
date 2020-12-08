@@ -1,5 +1,15 @@
 <div class="card" style="width: 18rem;">
-    <img [src]="cordel.xilogravuraUrl" class="card-img-top" alt="xilogravura">
+    
+    <div class="embed-responsive embed-responsive-1by1">
+        
+        <img *ngIf="cordel.xilogravuraUrl; else noImage" [src]="cordel.xilogravuraUrl" class="card-img-top  embed-responsive-item" alt="xilogravura">
+        
+        <ng-template #noImage>
+            <img src="assets/img/ebook.png" class="card-img-top  embed-responsive-item" alt="xilogravura">
+        </ng-template>
+
+    </div>
+
     <div class="card-body">
         <h5 class="card-title">{{cordel.title | uppercase}}</h5>
         <a  class="btn btn-primary"  [routerLink]="['/cordel', cordel.id]">Ler</a>

@@ -68,4 +68,8 @@ export class AuthenticationService {
     return payload.roles;
   }
 
+  getToken() : string {
+    return localStorage.getItem(TOKEN);
+  }
+
 }
