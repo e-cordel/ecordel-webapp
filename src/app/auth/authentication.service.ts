@@ -10,6 +10,7 @@ import * as moment from 'moment';
 
 import decode from 'jwt-decode';
 import { TokenPayload } from './token-payload';
+import { Router } from '@angular/router';
 
 const TOKEN = "token";
 const EXPIRES_AT = "expires_at";
@@ -21,7 +22,7 @@ export class AuthenticationService {
   
   private loginUrl = `${environment.API_URL}/auth`;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   login(username: string, password: string) {
     return this.httpClient.post(this.loginUrl, { username, password })
@@ -38,6 +39,11 @@ export class AuthenticationService {
   }
 
   logout() {
+    this.cleanLocalStorage();
+    this.router.navigateByUrl("/");
+  }
+
+  private cleanLocalStorage() {
     localStorage.removeItem(TOKEN);
     localStorage.removeItem(EXPIRES_AT);
   }
