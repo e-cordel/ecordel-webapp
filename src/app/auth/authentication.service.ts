@@ -8,6 +8,10 @@ import { AuthResult } from './auth-result';
 
 import * as moment from 'moment';
 
+import decode from 'jwt-decode';
+import { TokenPayload } from './token-payload';
+import { Router } from '@angular/router';
+
 const TOKEN = "token";
 const EXPIRES_AT = "expires_at";
 
@@ -18,7 +22,7 @@ export class AuthenticationService {
   
   private loginUrl = `${environment.API_URL}/auth`;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   login(username: string, password: string) {
     return this.httpClient.post(this.loginUrl, { username, password })
@@ -35,6 +39,11 @@ export class AuthenticationService {
   }
 
   logout() {
+    this.cleanLocalStorage();
+    this.router.navigateByUrl("/");
+  }
+
+  private cleanLocalStorage() {
     localStorage.removeItem(TOKEN);
     localStorage.removeItem(EXPIRES_AT);
   }
@@ -51,6 +60,16 @@ export class AuthenticationService {
     const expiration = localStorage.getItem(EXPIRES_AT);
     const expiresAt = JSON.parse(expiration);
     return moment(expiresAt);
+  }
+
+  getRoles() : string[] {
+    const payload : TokenPayload = decode ( localStorage.getItem(TOKEN));
+    console.log(payload);
+    return payload.roles;
+  }
+
+  getToken() : string {
+    return localStorage.getItem(TOKEN);
   }
 
 }

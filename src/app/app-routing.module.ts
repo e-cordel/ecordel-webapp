@@ -6,11 +6,19 @@ import { AppComponent } from './app.component';
 import { CallToActionComponent } from './template/call-to-action/call-to-action.component';
 import { CordelFormComponent } from './cordels/cordel-form/cordel-form.component';
 import { LoginComponent } from './auth/login/login.component';
+import { RoleGuardService } from './auth/role-guard.service';
 
 
 const routes: Routes = [
   {path:'cordel/all', component: CordelListComponent},
-  {path:'cordel/new', component: CordelFormComponent},
+  {
+    path:'cordel/new', 
+    component: CordelFormComponent,
+    canActivate: [RoleGuardService], 
+    data: { 
+      expectedRole: 'ADMIN'
+    } 
+  },
   {path:'cordel/:id', component: CordelDetailComponent},
   {path:'login', component: LoginComponent},
   {path:'', component: CallToActionComponent}

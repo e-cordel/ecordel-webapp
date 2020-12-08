@@ -11,6 +11,8 @@
             <ul class="list-unstyled">
               <li><a href="https://ecordel.com.br/como-contribuir/" target="_blank" class="text-white">Como contribuir</a></li>
               <li><a href="mailto:contato@ecordel.com.br" class="text-white">contato@ecordel.com.br</a></li>
+              <li *ngIf="authService.isLoggedOut()"><a [routerLink]="['/login']" class="text-white">Login</a></li>
+              <li *ngIf="authService.isLoggedIn()"><a href="#" (click)="authService.logout()" class="text-white">Sair</a></li>
             </ul>
           </div>
         </div>
@@ -37,7 +39,7 @@
 <footer class="text-muted">
   <div class="container">
     <p class="float-right">
-      <a href="#">Back to top</a>
+      <a href="#">Voltar ao início</a>
     </p>
     <a href="/cordel/new">Novo cordel</a>
   </div>
