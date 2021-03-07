@@ -41,6 +41,6 @@
     <p class="float-right">
       <a href="#">Voltar ao início</a>
     </p>
-    <a href="/cordel/new">Novo cordel</a>
+    <a *ngIf="authService.isLoggedIn()" href="/cordel/new">Novo cordel</a>
   </div>
 </footer>
