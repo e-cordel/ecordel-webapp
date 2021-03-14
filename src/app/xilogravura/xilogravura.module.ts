@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { XilogravuraFormComponent } from './xilogravura-form/xilogravura-form.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     BrowserModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     XilogravuraFormComponent

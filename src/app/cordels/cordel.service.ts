@@ -12,7 +12,7 @@ import { AuthenticationService } from '../auth/authentication.service';
 })
 export class CordelService{
 
-        private ecordelApi = `${environment.API_URL}/cordels`;
+    private ecordelApi = `${environment.API_URL}/cordels`;
     
     constructor(private httpClient: HttpClient, private authService : AuthenticationService){}
 
