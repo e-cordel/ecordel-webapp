@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 @Component({
   selector: 'ec-xilogravura-form',
@@ -15,7 +16,7 @@ export class XilogravuraFormComponent implements OnInit {
   @Input() cordelId : number;
   private api = `${environment.API_URL}/cordels`;
 
-  constructor(public formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(public formBuilder: FormBuilder, private http: HttpClient, private authService: AuthenticationService) {
     this.form = this.formBuilder.group({
       description: [""],
       file: [null]
@@ -29,11 +30,19 @@ export class XilogravuraFormComponent implements OnInit {
 
     formData.append("description", this.form.get('description').value);
     formData.append("file", this.form.get('file').value);
+    
+    // todo duplicated code, move to a utils/helper class
+    let options : Object = {
+      headers : new HttpHeaders ( this.authService.getAuthorizationHeader() ),
+      observe : "response",
+      responseType: 'json'
+    }
 
-    this.http.post(`${this.api}/${this.cordelId}/xilogravura`, formData).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    );
+    this.http.put(`${this.api}/${this.cordelId}/xilogravura`, formData, options)
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      );
   }
 
   upload(event) {
