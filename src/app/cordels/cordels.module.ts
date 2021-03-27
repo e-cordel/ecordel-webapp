@@ -7,6 +7,7 @@ import { StarComponent } from './star/star.component';
 import { CordelDetailComponent } from './cordel-detail/cordel-detail.component';
 import { RouterModule } from '@angular/router';
 import { CordelFormComponent } from './cordel-form/cordel-form.component';
+import { XilogravuraModule } from '../xilogravura/xilogravura.module';
 
 @NgModule({
     declarations:[
@@ -19,7 +20,8 @@ import { CordelFormComponent } from './cordel-form/cordel-form.component';
     imports: [
         BrowserModule,
         RouterModule,
-        FormsModule
+        FormsModule,
+        XilogravuraModule
     ],
     exports:[
         CordelCardComponent,

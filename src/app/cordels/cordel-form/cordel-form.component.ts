@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./cordel-form.component.css']
 })
 export class CordelFormComponent implements OnInit {
-
+  
+  private _cordelId : string;
+  
   private _cordel = {
     author:{},
   } as Cordel;
@@ -23,12 +25,20 @@ export class CordelFormComponent implements OnInit {
 
   onSubmit(){
     console.log("submiting ", this._cordel);
-    this.cordelService.addCordel(this._cordel).subscribe( localtion => alert('Cordel salvo com sucesso!') );
-    this.router.navigateByUrl("/");
+    
+    this.cordelService.addCordel(this._cordel).subscribe( location => {
+      alert('Cordel salvo com sucesso!');
+      this._cordelId = location.split("/").pop();
+    });
+    
   }
 
   get cordel(){
     return this._cordel;
+  }
+
+  get cordelId(){
+    return this._cordelId;
   }
 
 }

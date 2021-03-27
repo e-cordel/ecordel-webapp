@@ -48,7 +48,7 @@ export class AuthenticationService {
     localStorage.removeItem(EXPIRES_AT);
   }
 
-  public isLoggedIn() {
+  isLoggedIn() {
     return moment().isBefore(this.getExpiration());
   }
 
@@ -70,6 +70,10 @@ export class AuthenticationService {
 
   getToken() : string {
     return localStorage.getItem(TOKEN);
+  }
+
+  getAuthorizationHeader() : any {
+    return { Authorization: `Bearer ${this.getToken()}`};
   }
 
 }
