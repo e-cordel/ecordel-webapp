@@ -1,0 +1,15 @@
+<h3>Xilogravura</h3>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="form-group">
+        <label for="descriptionInput">Descrição</label>
+        <input type="text" class="form-control" required="true"
+            id="descriptionInput" name="description">
+    </div>
+    <div class="form-group">
+        <label for="fileInput">Imagem</label>
+        <input type="file" class="form-control-file" id="fileInput" 
+            required="true" name="file" (change)="upload($event)">
+    </div>
+    <button type="submit" class="btn btn-success">Enviar</button>
+</form>

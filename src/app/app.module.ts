@@ -12,7 +12,7 @@ import { AuthenticationModule } from './auth/authentication.module';
 @NgModule({
   declarations: [
     AppComponent,
-    CallToActionComponent
+    CallToActionComponent,
   ],
   imports: [
     BrowserModule,
