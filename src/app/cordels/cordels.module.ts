@@ -8,6 +8,7 @@ import { CordelDetailComponent } from './cordel-detail/cordel-detail.component';
 import { RouterModule } from '@angular/router';
 import { CordelFormComponent } from './cordel-form/cordel-form.component';
 import { XilogravuraModule } from '../xilogravura/xilogravura.module';
+import { BreakLine } from './breakline.pipe';
 
 @NgModule({
     declarations:[
@@ -15,7 +16,8 @@ import { XilogravuraModule } from '../xilogravura/xilogravura.module';
         CordelCardComponent,
         CordelListComponent,
         CordelDetailComponent,
-        CordelFormComponent
+        CordelFormComponent,
+        BreakLine
     ],
     imports: [
         BrowserModule,
@@ -26,7 +28,8 @@ import { XilogravuraModule } from '../xilogravura/xilogravura.module';
     exports:[
         CordelCardComponent,
         CordelListComponent,
-        CordelFormComponent
+        CordelFormComponent,
+        BreakLine
     ]
 })
 export class CordelsModule {
