@@ -1,12 +1,14 @@
 <div *ngIf="cordel" class="container p-3">
     
     <div class="text-center">
-        <h3>{{cordel.title}}</h3>
-        <img *ngIf="cordel.xilogravura; else noImage" [src]="cordel.xilogravura.url" class="img-thumbnail" alt="xilogravura">
+        <img *ngIf="cordel.xilogravura; else noImage" [src]="cordel.xilogravura.url" class="img-thumbnail" style="max-height: 400px" alt="xilogravura">
         <ng-template #noImage>
-            <img src="assets/img/ebook.png" class="img-thumbnail" alt="xilogravura">
+            <img src="assets/img/ebook.png" class="img-thumbnail" style="max-height: 400px" alt="xilogravura">
         </ng-template>
-        <p class="p-3" innerHTML={{cordel.content}}></p>
+
+        <h3 class="p-3">{{cordel.title}}</h3>
+        <p class="lead">{{cordel.author.name}}</p>
+        <p class="p-3" innerHTML="{{ cordel.content | breakline }}"></p>
 
         <button class="btn btn-secondary my-2" (click)='onBack()'>Voltar</button>
     </div>
