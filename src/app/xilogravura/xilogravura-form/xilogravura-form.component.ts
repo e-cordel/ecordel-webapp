@@ -40,7 +40,7 @@ export class XilogravuraFormComponent implements OnInit {
 
     this.http.put(`${this.api}/${this.cordelId}/xilogravura`, formData, options)
       .subscribe(
-        (response) => console.log(response),
+        (response) => alert('Imagem enviada com sucesso!'),
         (error) => console.log(error)
       );
   }
