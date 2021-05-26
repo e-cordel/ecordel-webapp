@@ -1,5 +1,8 @@
-# e-cordel web
+# e-cordel web [ARQUIVADO]
 
+    
+❗ **Esse projeto está arquivado. O novo projeto pode ser encontrado [aqui.](https://github.com/e-cordel/ecordel-frontend)** ❗
+    
 This project was create to provide a web version of the ecordel app with cordel editor and administration area.
 
 ## Development server
